@@ -1,31 +1,23 @@
-#include <iostream>
-#include <string>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 
+void solve() {
+    int n,k,cnt=0;
+    string s; cin>>n>>k>>s;
+    for (char c : s) {if (c=='0') cnt++;}
+    int ans=n-cnt;
+    int sum=n/2;
+
+    int diff=abs(ans-sum);
+    if (k>=diff && k<=sum && (k-diff)%2==0) cout<<"YES\n";
+    else cout<<"NO\n";
+}
+
 int main() {
-    int t;
-    cin >> t;
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        string s;
-        cin >> s;
-
-        int good = 0;
-        for (int i = 0; i < n / 2; i++) {
-            if (s[i] == s[n - i - 1]) {
-                good++;
-            }
-        }
-
-        if (k <= n/2&&abs(k-good) % 2 == 0) {
-            cout << "YES\n";
-        } else {
-            cout << "NO\n";
-        }
-    }
-
+    int t; cin>>t;
+    while (t--) solve();
     return 0;
 }
